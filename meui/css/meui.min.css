@@ -1,0 +1,1036 @@
+@charset "utf-8";
+/**
+* MEUI前端框架样式
+* Author:mufeng
+* Date: 2018.9.1
+* UpDate:2020.11.26
+*/
+html,body{
+	width: 100%;
+	margin:0 auto;
+	padding: 0;
+	/*几个CSS特别属性讲解：
+	· text-size-adjust 是否允许字体缩放. 值 auto 允许, none 禁用
+	· tap-highlight-color 去掉ios点击下的阴影. 一般用值 rgba(0, 0, 0, 0) 即可实现去掉阴影的目的
+	· touch-callout 是否禁用系统默认菜单(ios). 值: default 允许, none 禁用, unset 未设置
+	· user-select  是否允许系统自带的复制功能(长按复制)，即是否允许用户选择元素或选择文本后对内容操作. 值: auto 用户根据需要选择文本, none 禁用, all 全部选中(一般不用这个属性), 
+	ios中将属性设置为none值时在input textarea标签上会起到禁止输入的效果 
+	· touch-action 是否允许用户操作.值: all 允许, none 不允许(任何元素都无法操作，点页面任何地方都没反应。!!!请谨慎使用）
+	*/
+	-webkit-text-size-adjust: none;
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0); 
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+body{
+    line-height: 1.5;
+    background-color:#fff;
+		/*background-color:#f4f4f4;*/
+		font-family:'Hiragino Sans GB W3','Hiragino Sans GB','microsoft yahei','Sim sun','Helvetica Neue','Helvetica,sans-serif';
+		font-size:14px;
+		color: #212121;
+		overflow-y:auto;
+		/*-webkit-overflow-scrolling:touch;*/ /*ios滚动回弹效果,页面更流畅,一般用于某个需要滚动的元素(并且加上z-index:1)，而不用于body*/
+		overflow-x:hidden;
+}
+*{	
+		margin:0;
+		padding:0;
+		box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+		-ms-box-sizing:border-box;
+		outline:none;
+		-webkit-tap-highlight-color:transparent;
+}
+header,footer,main,section,menu,nav,article,aside,hgroup,summary,details,figcaption,figure{display: block; }
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*=====元素外观*/
+/*苹果iphone、安卓都有默认样式,故需重定义*/
+button,
+input[type=text],
+textarea{font-size:14px;color:inherit;outline:0;appearance:none;-webkit-appearance:none;-moz-appearance:none; background-color:transparent; /*border-radius:0;*/overflow: hidden; text-overflow:ellipsis; resize: none;}
+button {overflow: visible;text-transform: none;}
+select {text-transform: none;}
+ol,ul,li {list-style: none;}
+a {/*color: #0062cc;*/ color:inherit; text-decoration: none;background-color: transparent;}
+i,em{font-style:normal;}
+
+/*=====readonly属性*/
+input:read-only,
+input[readonly],
+span[readonly],
+textarea[readonly]{
+	background-color:#fffbfb;
+	-webkit-text-fill-color:inherit;
+	-webkit-text-stroke:1px solid #d6e9c6;
+	-webkit-opacity:1;
+	opacity:1;
+	filter:alpha(opacity=100);
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+}
+
+/*=====disabled属性*/
+/* ios input或textarea属性disabled时字体变成灰色的解决方案*/
+input:disabled,
+input[disabled],
+textarea:disabled,
+textarea[disabled]{
+	background-color:#f4f4f4;
+	-webkit-text-fill-color:inherit;
+	-webkit-text-stroke:1px solid #d6e9c6;
+	/*disabled 默认透明度0.3，一定要加opacity:1*/
+	-webkit-opacity:1;
+	opacity:1;
+	filter:alpha(opacity=100);
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+}
+/*=====placeholder属性*/
+/*input placehoder文字大小*/
+::-webkit-input-placeholder{font-size:0.6rem;color:#e2dcdc;}
+::-moz-placeholder{font-size:0.6rem;color:#e2dcdc;}
+:-moz-placeholder{font-size:0.6rem;color:#e2dcdc;}
+:-ms-input-placeholder{font-size:0.6rem;color:#e2dcdc;}
+input:placeholder, textarea::placeholder{font-size:0.6rem;color:#e2dcdc;}
+/*div,span等元素placeholder属性*/
+div:empty::before,
+span:empty::before{content:attr(placeholder);color: #e2dcdc;font-size:0.6rem;}
+
+/*=====区块滚动条样式*/
+.scrollbar-skin{
+	/*ie滚动条样式*/
+	scrollbar-base-color: #134087;
+	scrollbar-3dlight-color:rgb(173, 165, 165);
+	scrollbar-highlight-color: #fff; /*整体颜色*/
+	scrollbar-track-color: #f4f4f4; /*轨道颜色*/
+	scrollbar-face-color:#c0c3c9; /*滑块及按钮颜色*/
+	scrollbar-arrow-color: #011433; /*按钮箭头颜色*/
+	scrollbar-shadow-color:#e5e7eb; /*阴影颜色*/
+	/*scrollbar-dark-shadow-color: #011433;*/
+}
+/*chrome,firefox等webkit内核浏览器滚动条样式*/
+.scrollbar-skin::-webkit-scrollbar{width:2px;}/*整体样式*/
+.scrollbar-skin::-webkit-scrollbar-thumb{/*里面小方块*/
+	border-radius:5px;
+	-webkit-box-shadow:inset 0 0 5px rgba(0,0,0,.2);
+	background:rgba(0,0,0,.2);
+}
+.scrollbar-skin::-webkit-scrollbar-track{ /*里面轨道*/
+	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.1);
+	border-radius:0;
+	background:rgba(0,0,0,.1);
+}
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+--------common----------+*/
+.flex{
+	display:-webkit-box;  
+	display:-moz-box; 
+	display:-ms-flexbox; 
+	display:-webkit-flex; 
+	display:flex; 
+	display:box;
+	
+}
+/*h1,h2,h3,h4,h5,h6+*/
+.meui-h1{
+	margin-bottom:15px;
+	background-color:#f5f5f5;
+	padding:15px;
+	font-size:20px;
+	text-align:center;
+	color:#7692ab;
+	border-radius:8px;
+}
+.meui-h1:before,
+.meui-h1:after{
+	content:'';
+	display:inline-block;
+	width:3em;
+	height:1px;
+	background:#9eaebc;
+	color:#9eaebc; 
+	vertical-align:middle;
+	font-weight:normal;
+}
+.meui-h2{font-size:18px;color:#777;text-align:center;}
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+--------meui按钮----------+*/
+.meui-flex{
+	display:-webkit-box;  
+	display:-moz-box; 
+	display:-ms-flexbox; 
+	display:-webkit-flex; 
+	display:flex; 
+	display:box;
+	/* justify-content:center; */
+}
+.meui-block{display:block;}
+.meui-btn{
+	padding:0 15px;
+	height:32px;
+	line-height:32px;
+	color:#666;
+	background-color:#eee;
+	border:0;
+	border-radius:2px;
+	text-alig:center;
+	cursor:pointer;
+}
+.meui-btn:focus{outline:none;}
+.meui-btn:hover{
+  opacity:.9;
+  filter:alpha(opacity=90);
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+}
+.meui-btn::after{border:1px solid transparent;}
+/*按钮尺寸*/
+.meui-btn.small{height:24px;line-height:24px;}
+.meui-btn.l-1x{height:40px;line-height:40px;}
+.meui-btn.l-2x{height:50px;line-height:50px;}
+.meui-btn.l-3x{height:60px;line-height:60px;}
+.meui-btn.l-4x{height:70px;line-height:70px;}
+.meui-btn.l-5px{height:80px;line-height:80px;}
+/*圆角*/
+.meui-btn.radius{border-radius:4px;}
+.meui-btn.rounded{border-radius:200px;}
+.meui-btn.circle{border-radius:100%;}
+
+/*按钮颜色*/
+/*白色*/
+/*灰色*/
+.meui-btn.white{background-color:#fff; border: 1px solid #c3bebe!important; color: #585858;}
+.meui-btn.gray{background-color:#eee;}
+.meui-btn.lightgray{color:#fff; background-color:#b1c3c5;}
+/*黑色*/
+.meui-btn.black{color:#fff; background-color:#888;}
+.meui-btn.darkblack{color:#f2f2f2; background-color:#506581;}
+/*蓝色*/
+.meui-btn.blue{color:#fff; background-color:#00BFFF;}
+.meui-btn.lightblue{color:#fff; background-color:#00bcd4;}
+.meui-btn.dimblue{color:#fff; background-color:#1b9af7;}
+.meui-btn.darkblue{color:#fff; background-color:#0ce;}
+.meui-btn.dimdarkblue{color:#fff; background-color:#0ce;}
+/*绿色*/
+.meui-btn.green{color:#fff; background-color:#04BE02;}
+.meui-btn.lightgreen{color:#fff; background-color:#a5de37;}
+.meui-btn.dimgreen{color:#fff; background-color:#12ccad;}
+.meui-btn.darkgreen{color:#fff; background-color:#1cbfbf;}
+.meui-btn.dimdarkgreen{color:#fff; background-color:#1ea6bd;}
+.meui-btn.graygreen{color:#fff; background-color:#87b87f;}
+/*红色*/
+.meui-btn.red{color:#fff; background-color:#FF0000;}
+.meui-btn.lightred{color:#fff; background-color:#ff7680;}
+.meui-btn.dimred{color:#fff; background-color:#f64c59;}
+/*金色橙色*/
+.meui-btn.orange{color:#fff; background-color:#f3ab26;}
+.meui-btn.lightorange{color:#fff; background-color:#fec04e;}
+/*紫色*/
+.meui-btn.purple{color:#fff; background-color:#7b72e9;}
+.meui-btn.lightpurple{color:#fff; background-color:#a49ef0;}
+
+
+
+
+/*按钮渐变*/
+.meui-btn.linear{
+	color:#fff;
+	background-image: -webkit-gradient(linear,left top,right top,from(#17e66c),to(#10c55b));
+    background-image: -webkit-linear-gradient(left,#17e66c,#10c55b);
+    background-image: linear-gradient(to right,#17e66c,#10c55b);
+    filter:progid:DXImageTransform.Microsoft.Gradient(gradientType=1, startColorStr=#17e66c, endColorStr=#10c55b);
+}
+
+
+
+
+
+
+/*按钮组*/
+.meui-button-group{}
+.meui-button-group>.meui-btn{margin-left:12px;}
+.meui-button-group>.meui-btn:first-child{margin-left:0;}
+/*meui-button*/
+.meui-button{width:98%;margin:15px auto;} /*竖排*/
+.meui-button>button{width:100%;}
+.meui-button>button:nth-child(2n),
+.meui-button>button:nth-child(2n+1){margin-top:8px;}
+.meui-button>button:first-child{margin-top:0;}
+.meui-button.flex>button{margin-top:0;} /*横排*/
+.meui-button.flex>button:nth-child(2n){margin-left:5px;}
+.meui-button.flex>button:nth-child(2n+1){margin-left:5px;}
+.meui-button.flex>button:first-child{margin-left:0;}
+/*有质感的按钮*/
+.meui-button.has-texture>button,
+.meui-btn.has-texture{
+	position:relative;
+  *display: inline;
+  zoom: 1; 
+  width:100%;
+	outline: none;
+	text-align: center;
+	justify-content:center;/*if flex*/
+	vertical-align: baseline;
+	border: solid 1px #b7b7b7;
+	border-radius: 3px;
+	text-decoration: none;
+	text-shadow: 0 .25px .25px rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	background: linear-gradient(to right bottom, #fff, #ededed);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+	color: #606060!important;
+	cursor: pointer;
+}
+.meui-button.has-texture>button:before,
+.meui-btn.has-texture:before{
+	content:'';
+	display:block;
+	position:absolute;
+	top:28%;
+	left:36%;
+	width:1.25rem;
+	height:1.25rem;
+	background-size:100% auto;
+	background-repeat:no-repeat;
+	background-position:100% 90%;
+	background-image:url('data:image/png;base64,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');
+}
+.meui-button.has-texture>button.no-bg-img:before,
+.meui-btn.has-texture.no-bg-img:before{background-image:none;}
+.meui-button.has-texture>button.blue,
+.meui-btn.has-texture.blue{ /*蓝色质感*/
+	color: #fff!important;
+	border: solid 1px #1b9af7;
+	background: #1b9af7;
+	background: -webkit-gradient(linear, left top, left bottom, from(#42a8f3), to(#98d3e7));
+	background: -moz-linear-gradient(top,  #42a8f3, #98d3e7);
+	background: linear-gradient(to left bottom, #98d3e7, #42a8f3);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#98d3e7', endColorstr='#42a8f3');
+}
+.meui-button.has-texture>button.green,
+.meui-btn.has-texture.green{ /*绿色质感*/
+	color: #e8f0de!important;
+	border: solid 1px #538312;
+	background: #64991e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
+	background: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
+	background: linear-gradient(to left bottom, #7db72f, #4e7d0e);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+}
+.meui-button.has-texture>button.red,
+.meui-btn.has-texture.red{ /*红色质感*/
+	color: #fae7e9!important;
+	border: solid 1px #b73948;
+	background: #da5867;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f16c7c), to(#bf404f));
+	background: -moz-linear-gradient(top,  #f16c7c,  #bf404f);
+	background: linear-gradient(to left bottom, #f16c7c, #bf404f);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f16c7c', endColorstr='#bf404f');
+}
+.meui-button.has-texture>button.orange,
+.meui-btn.has-texture.orange{ /*橙色质感*/
+	color: #fef4e9!important;
+	border: solid 1px #da7c0c;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	background: linear-gradient(to left bottom, #faa51a, #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.meui-button.has-texture>button.gray,
+.meui-btn.has-texture.gray{ /*灰色质感*/
+	color: #e9e9e9!important;
+	border: solid 1px #555;
+	background: #6e6e6e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#888), to(#575757));
+	background: -moz-linear-gradient(top,  #888,  #575757);
+	background: linear-gradient(to left bottom, #888, #575757);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#575757');
+}
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+-----------meui-checkbox 复选框 美化-------------+*/
+/*=====圆形打钩*/
+input[type=checkbox].meui-checkbox.circle-tick{
+    /*去除浏览器默认样式*/
+    -webkit-appearance:none;
+    -moz-appearance: none;
+    appearance: none;
+    /*自己样式*/
+    width: 20px;
+    height: 20px;
+    border:1px solid red;
+    outline: none;
+    background: transparent;
+    border:1px solid #00BFFF;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+input[type=checkbox].meui-checkbox.circle-tick:after{
+    content: '✔';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #00BFFF;
+    color: #fff;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 20px;
+    /*增加动画*/
+    transition:all ease-in-out 300ms;
+    -webkit-transition: all ease-in-out 300ms;
+    -moz-transition: all ease-in-out 300ms;
+    opacity: 0;
+}
+input[type=checkbox].meui-checkbox.circle-tick:checked::after{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    opacity: 1;
+} 
+/*绿色主题*/
+input[type=checkbox].meui-checkbox.circle-tick.green{border-color:#04BE02;}
+input[type=checkbox].meui-checkbox.circle-tick.green:after{background:#04BE02;}
+/*红色主题*/
+input[type=checkbox].meui-checkbox.circle-tick.red{border-color:#FF0000;}
+input[type=checkbox].meui-checkbox.circle-tick.red:after{background:#FF0000;}
+
+
+/*=====开关*/
+input[type=checkbox].meui-checkbox.on-off{
+    /*去掉默认样式*/
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance:none;
+	-ms-appearance:none;
+    /*定义自己的样式*/
+    background: #fff;
+    border:1px solid #00BFFF;
+    height: 21px;
+    width: 51px;
+    border-radius: 20px;
+    outline: none;
+    transition: all ease-in-out 300ms;
+    -webkit-transition: all ease-in-out 300ms;
+    -moz-transition: all ease-in-out 300ms;
+    position: relative;
+}
+input[type=checkbox].meui-checkbox.on-off::after{
+    content: 'off';
+    display: block;
+    height: 15px;
+    line-height:15px;
+    width: 15px;
+    padding:2px;
+    border: 1px solid #fff;
+    background: #00BFFF;
+	color:#fff;
+	font-size: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    -webkit-transition: all ease-in-out 300ms;
+    -moz-transition: all ease-in-out 300ms;
+    transition: all ease-in-out 300ms;
+}
+input[type=checkbox].meui-checkbox.on-off:checked{ background: #00BFFF;}
+input[type=checkbox].meui-checkbox.on-off:checked::after{
+    content: 'on';
+    left: 29px;
+    background: #fff;
+    color: #00BFFF;
+}
+/*开关禁用时*/
+input[type=checkbox].meui-checkbox.on-off[disabled]{border-color: #e9e5e5!important;}
+input[type=checkbox].meui-checkbox.on-off[disabled]::after{background: #ddd!important; color: #fff!important;}
+/*绿色主题*/
+input[type=checkbox].meui-checkbox.on-off.green{border-color: #04BE02;}
+input[type=checkbox].meui-checkbox.on-off.green::after{background: #04BE02;}
+input[type=checkbox].meui-checkbox.on-off.green:checked{ background: #04BE02;}
+input[type=checkbox].meui-checkbox.on-off.green:checked::after{color: #04BE02; background:#fff;}
+/*红色主题*/
+input[type=checkbox].meui-checkbox.on-off.red{border-color: #FF0000;}
+input[type=checkbox].meui-checkbox.on-off.red::after{background: #FF0000;}
+input[type=checkbox].meui-checkbox.on-off.red:checked{ background: #FF0000;}
+input[type=checkbox].meui-checkbox.on-off.red:checked::after{color: #FF0000; background:#fff;}
+
+
+/*=====方形打勾*/
+input[type="checkbox"].square-tick{margin-top:8px; appearance:none; -webkit-appearance:none; -moz-appearance:none; -o-appearance:none; -ms-appearance:none; width:16px; height:16px; border-radius:2px; border:1px solid #00BFFF; box-shadow:0 1px 2px #ace; padding:0\0; outline:none\0; box-shadow:none\0; border:0\0; }
+input[type="checkbox"].square-tick:checked{position:relative;width:16px;height:16px;width:16px\0;height:16px\0;border-radius:0;background-color: #00BFFF;box-sizing:border-box;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzhGRjY1RTQ1REE5MTFFOEFDNkZFQTlFNjNBREZEQjMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzhGRjY1RTM1REE5MTFFOEFDNkZFQTlFNjNBREZEQjMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQwRDRCQzYzNURBOTExRThBOEQyQUY4RUU3NUY2MUNGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQwRDRCQzY0NURBOTExRThBOEQyQUY4RUU3NUY2MUNGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+DvGvagAAAMdJREFUeNpi/P//PwMlgIUCvcxAHMZEgQGSQGxArgGcQLwRiNkZyQyD40B8B4hjyTFgGxB/BeJQcgJxBRBzA7EPXAToggYg1ge5hACeCsTngJgFWRwUiO+AeDsQm+CxuR6IHYHYBYj/oMhATUoH4kdArIPF5hIg/gTEMthchsxJBeLXaIbEAvFzINbF5TV0AZBL7gCxIhBbAfFHIDbFFzbYBBOA+AUQPwViJ0KBiy0aFwAxHzSu95GbmY4C8T9iEgYjpdkZIMAAcIUWuuVNTxMAAAAASUVORK5CYII=');background-repeat:no-repeat;background-position:50% 50%;background-size:100% auto;}
+input[type="checkbox"].square-tick:checked:before{content:'';position:absolute;left:-2px;top:-2px;display:block;width:16px;height:16px;border: 1px solid #00BFFF;border-radius:2px;}
+/*绿色主题*/
+input[type="checkbox"].square-tick.green{border-color: #04BE02;}
+input[type="checkbox"].square-tick.green:checked{background-color: #04BE02;}
+input[type="checkbox"].square-tick.green:checked:before{border-color: #04BE02;}
+/*红色主题*/
+input[type="checkbox"].square-tick.red{border-color: #FF0000;}
+input[type="checkbox"].square-tick.red:checked{background-color: #FF0000;}
+input[type="checkbox"].square-tick.red:checked:before{border-color: #FF0000;}
+/*白色主题*/
+input[type="checkbox"].square-tick.white{border-color: #ada5a5;}
+input[type="checkbox"].square-tick.white:checked{	
+	background:#fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkZCOTQ4NzQ1REE5MTFFOEI1M0VCNzdFRkZFRTdDRDAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkZCOTQ4NzM1REE5MTFFOEI1M0VCNzdFRkZFRTdDRDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU0REY4MEYzNURBOTExRTg5RkJERjgyNUZBQzE3QkU1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU0REY4MEY0NURBOTExRTg5RkJERjgyNUZBQzE3QkU1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+VoexqwAAAPlJREFUeNpi/P//PwMlgCUwMJBcvcxAHMZEgeWSjIyMBuQawAnEG4HeZyfJAKCNMHofEF8DMgtIMgAU4ECN24DMJ0B2LDgQSXTBCqBGbiDTB+QakIEgFzQAsT4R+qcCsRoQOwPxP5ggyIB3QNO2A2kTPJrrgWocgTa6ANl/UNIBEE8C4p9AvA6IvYD4CprmEqDmYqBmLZBlyOGBHAYzgYr+AQX3A9mOSIbEQjVbgwIOa0pEYs8GKmYCKt4AZLtCE8oUqLMv40zKaPyZUO8cB+K/QM2gdH4ab15A9g8ULADazAcU+wpk7yOYmXAkmKPIUYU3bVCanQECDADO2VqWnq+KAAAAAABJRU5ErkJggg==') 50% 50% no-repeat;
+	background-size: 80% auto;
+	background-position: 30% 35%;
+	border: none;
+}
+input[type="checkbox"].square-tick.white:checked:before{border-color: #a79e9e;}
+
+
+
+/*=====方块*/
+input[type="checkbox"].square{appearance:none;-webkit-appearance:none;}
+input[type="checkbox"].square,
+input[type="checkbox"].square:after,
+input[type="checkbox"].square:checked{width:14px;height:14px;width:16px\9;height:16px\9;vertical-align:middle;}
+input[type="checkbox"].square:after{content:'';display:inline-block;border:1px solid rgba(0, 0, 0,.3);border:0\9;margin-top:-8px;margin-left:-2px;}
+input[type="checkbox"].square:checked{background:#00BFFF;; width:12px;height:12px;width:16px\9;height:16px\9;border:1px solid rgba(0, 0, 0,.15);border:0\9;}
+input[type="checkbox"].square:checked:after{width:16px;height:16px;width:16px\9;height:16px\9;margin-top:-10px;margin-left:-4px;}
+/*蓝色主题*/
+input[type="checkbox"].square.green:checked{background:#04BE02;}
+input[type="checkbox"].square.red:checked{background:#FF0000;}
+
+
+
+
+
+/*+-----------meui-radio 单选 美化-------------+*/
+/*=====单个radio*/
+/*蓝色主题*/
+input[type=radio].meui-radio{
+	/*去除浏览器默认样式*/
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/*自定义样式*/
+	width: 20px;
+	height: 20px;
+	border:1px solid #00BFFF;
+	border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	outline: none;
+	position: relative;
+	border-color: transparent\9!important;
+}
+input[type=radio].meui-radio::after{
+	content: '';
+	display: block;
+	width: 12px;
+	height: 12px;
+	background: #00BFFF;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	transform: scale(0);
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	transition: all ease-in-out 300ms;
+	-webkit-transition : all ease-in-out 300ms;
+	-moz-transition : all ease-in-out 300ms;
+}
+input[type=radio].meui-radio:checked::after{
+	transform: scale(1);
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+}
+/*绿色主题*/
+input[type=radio].meui-radio.green{ border-color:#04BE02;}
+input[type=radio].meui-radio.green::after{ background: #04BE02;}
+/*红色主题*/
+input[type=radio].meui-radio.red{ border-color:#FF0000;}
+input[type=radio].meui-radio.red::after{ background: #FF0000;}
+
+/*=====一组radio*/
+.meui-radio-group .group{ display:inline-block; vertical-align:top; margin-right:10px;}
+.meui-radio-group .group label{ display:inline-block; vertical-align:top; margin-left:5px;}
+
+
+
+/*+-----------meui-switch 开关按钮  美化-------------+*/
+input[type=checkbox].meui-switch {
+	width:36px;
+	height:19px;
+	position: relative;
+	vertical-align: top;
+	border: 1px solid #dddddd;
+	background-color: #dddddd!important; /*!important兼容ios*/
+	border-radius: 12px;
+	background-clip: content-box;
+	display: inline-block;
+	outline: none;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-background-clip: 
+	padding-box;
+	background-clip: 
+	padding-box;
+	-webkit-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+input[type=checkbox].meui-switch:before{
+	width: 18px;
+	height:18px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 12px;
+	background-color: #fff;
+	content: '';
+	-webkit-transition: left 0.2s;
+	transition: left 0.2s;
+}
+input[type=checkbox].meui-switch:checked{border-color: #00BFFF; background-color: #00BFFF!important;} /*!important兼容ios*/
+input[type=checkbox].meui-switch:checked:before{left: 16px;}
+
+/*绿色主题*/
+input[type=checkbox].meui-switch.green:checked{border-color: #04BE02; background-color: #04BE02!important;;}
+/*红色主题*/
+input[type=checkbox].meui-switch.red:checked{border-color: #FF0000; background-color:#FF0000!important;}
+
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+-----------meui-layout布局-------------+*/
+.meui-layout{width:100%;margin:25px auto;}
+.meui-layout *{font-size:14px;}
+.meui-caption{
+	border-bottom: 1px solid #ddd;
+	padding:10px 12px;
+	text-align:center;
+	font-size:16px;
+}
+.meui-one{
+	display:-webkit-box;  
+	display:-moz-box; 
+	display:-ms-flexbox; 
+	display:-webkit-flex; 
+	display:flex; 
+	display:box;
+	align-items:center;
+	position:relative;	
+}
+.meui-l{position:relative;padding:3px 5px;}
+.meui-r{
+	position:relative;
+	width:100%;
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+	flex:1;
+	margin-left:15px;
+	padding: 5px 0;
+}
+.meui-cell-tips{margin-left:5px;color:#999;font-size:12px;}
+.meui-cell-button{position:relative;min-width:60px;width:auto;margin-left:10px;}
+.meui-l>label{display:inline-block;width:60px;text-align:right;color:#777;}
+.meui-l.auto>label{width:auto;min-width:60px;}
+.meui-r>input[type="text"]{height:35px;padding:0 8px;}
+.meui-r>textarea{height:auto;min-height:80px;padding:5px 8px;overflow-y:auto;}
+.meui-r>.fa,
+.meui-r>.r-unit{
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+}
+.meui-r>.fa{left:8px;font-size:14px;color:#717171;} /*左侧图标*/
+.meui-r>.fa-spin{top:35%;}
+.meui-r>.r-unit{right:12px;font-size:12px;color:#999;} /*右侧单位*/
+.meui-r>input,
+.meui-r>textarea{width:100%;border:1px solid #e1e1e1;border-radius:3px;outline:0;}
+.meui-r>i+input[type="text"]{padding:0 30px;}
+.meui-r>i+textarea{padding:5px 30px;}
+.meui-r>input:focus,
+.meui-r>textarea:focus{border-color:#b3afaf;}
+.meui-cell-button>button{
+	*display: inline;
+    zoom: 1; 
+    width:100%;
+    height:35px;
+    line-height:35px;
+    padding:0 10px;
+	outline: none;
+	justify-content:center;/*if flex*/
+	vertical-align: baseline;
+	text-decoration: none;
+	text-shadow: 0 .25px .25px rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	border: solid 1px #b7b7b7;
+	border-radius: 3px;
+    color: #606060;
+    cursor:pointer;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+}
+/*有边线时*/
+.meui-layout.has-border{border:1px solid #ddd;border-radius:2px;}
+.meui-layout.has-border>.meui-one{border-bottom:1px dotted #ddd;}
+.meui-layout.has-border>.meui-one:last-child{border-bottom:0;}
+.meui-layout.has-border .meui-cell-button{margin-right:12px;}
+.meui-layout.has-border .meui-r{padding:10px;border-left:1px dotted #ddd;}
+.meui-layout.has-border .meui-r>.r-unit{right:25px;}
+.meui-layout.has-border .meui-r>.fa{left:20px;}
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+-----------类表格样式-------------+*/
+.liketable-one{
+	display:-webkit-box;  
+	display:-moz-box; 
+	display:-ms-flexbox; 
+	display:-webkit-flex; 
+	display:flex; 
+	display:box;
+
+}
+.liketable-head{}
+.liketable-content{border:1px solid #b5bbc3;border-radius:0 0 4px 4px;}
+/*边框样式*/
+.liketable-one>span{
+	display:-webkit-box;  
+	display:-moz-box; 
+	display:-ms-flexbox; 
+	display:-webkit-flex; 
+	display:flex; 
+	display:box;
+
+	-moz-box-flex:1;
+	-webkit-box-flex:1;
+	box-flex:1;
+	flex:1;
+
+	justify-content:center;
+	align-items:center;
+	width:100%;
+	/* border-width:1px; */
+	border-bottom-width:1px;
+	/*border-style:dotted;*/
+	border-color:#efefef;
+	text-align:center;
+	height:auto;
+	line-height:1.75;
+	padding:3px 5px;
+	font-size: 13px;
+	word-wrap:break-word; /*字母数字折行*/
+	word-break:break-all; /*字母数字折行*/
+	overflow:hidden;	
+}
+.liketable-one:not(.liketable-head){margin-bottom:0rem;}
+.liketable-one:nth-child(2n)>span{background-color:#f9f8f8;}
+.liketable-one:not(.liketable-head)>span{font-size: 12px;}
+.liketable-one>span:nth-child(2n){border-left-width:0;border-right-width:0;}
+.liketable-one>span:last-child{/* border-right-width:1px; */}
+.liketable-one:nth-child(2n)>span{border-bottom-width:1px;border-top-width:0;}
+.liketable-one>span>img{
+	display:block;
+	width:80%;
+	height:auto;
+	max-height:100%;
+	width:30px;
+	height:30px;
+	border-radius:30px;
+	border: 1px solid #afa7a7;
+	overflow:hidden;
+}
+/*表头*/
+.liketable-head>span{min-height: 40px;height:auto;background:#506581;color:#fff;}
+/*圆角*/
+.liketable-one:first-child>span:first-child{border-top-left-radius:5px;}
+.liketable-one:first-child>span:last-child{border-top-right-radius:5px;}
+.liketable-one:last-child>span:first-child{border-bottom-left-radius:5px;}
+.liketable-one:last-child>span:last-child{border-bottom-right-radius:5px;}
+/*外边框颜色*/
+.liketable-one>span:first-child{border-left-color:#ace;}
+.liketable-one>span:last-child{border-right-color:#ace;}
+.liketable-one:first-child>span{border-top-color:#ace;}
+.liketable-one:last-child>span{border-bottom-color:#ace;border-bottom-color:#efefef;}
+/*自定义每一列的宽度(flex-grow值越大宽度越越宽)*/
+.liketable-one>span:first-child{flex-grow: 2;}
+.liketable-one>span:nth-child(2){flex-grow: 3;} /*第2列*/
+.liketable-one>span:nth-child(3){flex-grow: 2.5;}
+.liketable-one>span:nth-child(4){flex-grow: 2;}
+.liketable-one>span:nth-child(5){flex-grow: 4;}
+.liketable-one>span:nth-child(6){flex-grow: 2;}
+.liketable-one>span:nth-child(7){flex-grow:.5;}
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+-----------转圈-------------+*/
+.meui-loading{
+	position:fixed;
+	z-index: 998;
+	top: 35%;
+	left: 0;
+	right: 0;
+	text-align:  center;
+}
+.meui-animate{
+	position:relative;
+	display: inline-block;
+	_display: inline-block;
+	*display: inline-block;
+	width: auto;
+	margin: 0 auto;
+	padding: 10px 15px;
+	background-color:rgba(0,0,0,0.8);
+	background-color: #000\9;
+	-khtml-opacity: 0.8;
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);/*兼容ie8及以下*/
+	text-align: center;
+	border-radius: 3px;
+}
+.meui-animate>i{
+	display: block;
+	width: 32px;
+	height: 32px;
+	background: url('data:image/gif;base64,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') 50% 50% no-repeat;
+	background-size:32px auto;
+}
+.meui-animate>span{
+	width: 100%;
+	margin-top: 8px!important;
+	color:#fff;
+	letter-spacing: 1px;
+	font-size: 12px;
+}
+.meui-animate>i,
+.meui-animate>span{display:block;margin:0 auto;text-align:center;}
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+-----------遮罩-------------+*/
+.meui_mask{
+	position:fixed;
+	top: 0;
+	left: 0;
+	z-index: 110;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.75);
+	background-color:#000\9;
+	-khtml-opacity:0.75;　/* Sarfari old version */
+	-moz-opacity:0.75;	/* FireFox old version*/
+	opacity:0.75;  /* New FireFox and Google Chrome*/
+	filter:alpha(opacity=75);　/* ie9及ie9+ */
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=75);/*兼容ie8及以下*/
+}
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+-----------关闭按钮-------------+*/
+.meui-close{
+	position:absolute;
+	top:3px;
+	right:3px;
+	width:18px;
+	height:18px;
+	background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAzUlEQVRIS81VwRHDMAiDDTpCRskIjJAROkJH6CbWaNnAPXK+XuOSBNehF39tSyAQMAUfDsanhUBEBmZGznkEMPeQishERDcAT8V5Z6AXzHzvISngGqSSLGclUQ+JBf5FUORqzqQENqWUxlpes8gtmRy93eyio4/ebHfbdI/EE4BZg1pDC8gL7iKopVDbtLSz28kl6gcRzS1euQbBp+anSxRa5NA29bSi583/R4UnKo8ZQ8a1ZcDTF05NErUyBwDq+vVG69nFW3/do+JX8hcQ9xYo8KLgqwAAAABJRU5ErkJggg==') center no-repeat;
+	background-size:100% auto;
+	cursor:pointer;
+}
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*+-----------iframe窗口-------------+*/
+#meui-frame-window{
+	position: fixed;
+	z-index: 51;
+	/*top: 2.5%;*/
+	left: 0;
+	right: 0;
+	width: 98%;
+	/*height:95%;*/ 
+	margin: 0 auto;
+	background-color: #fff;
+	border: 2px solid #888;
+	border-radius: 5px; 
+	overflow: hidden;
+}
+
+#meui-frame-window.no-border{border: 0;}
+#meui-frame-window.no-radius{border-radius: 0;}
+
+#meui-frame-window.animation-left{
+	-webkit-animation: mymoveLeft 0.2s;
+	-moz-animation: mymoveLeft 0.2s;
+	-o-animation: mymoveLeft 0.2s;
+	animation: mymoveLeft 0.2s;
+}
+#meui-frame-window.animation-top{
+	-webkit-animation: mymoveTop 0.2s;
+	-moz-animation: mymoveTop 0.2s;
+	-o-animation: mymoveTop 0.2s;
+	animation: mymoveTop 0.2s;
+}
+
+/*关闭按钮*/
+.iframe-close{
+	position: absolute;
+	z-index: 999; 
+	top: 0; 
+	width: 45px; 
+	height: 40px; 
+	background-color: #fff; 
+	border-radius: 30px; 
+	cursor: pointer; 
+}
+.iframe-close.right{ right: 0; }
+.iframe-close.left{ left: 0; }
+.iframe-close .icon{
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 28px 28px;
+}
+.iframe-close .icon-close{
+	background:transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAA/ElEQVRIS83XgQ0CIQwF0H8T6Ai6mU6mm3kj6AamhhokBX7PEu6SiwnheC2BCgsmPUvmHgHIuw6K5QTgmV4oLOAjwVcA92D8AuCW0LP8KizRCKxPJK6oji3wmk912SECr46ZwxJRJN4cq4Sj8G4CFvwv3kUFqMFbcQrtwV6cRhmYxV0oC/dwN+qBa7i0S0VyF57W4rKqZpld3sdVcLywlbm0uVDvVGt2VtbD4SlTba3e4YurtWWGbSdmYKbPzy7prWrPgJ6++/uTcEVfVBrq290cBKhorVpqtNFHn0i0VuW+FW768VZvEIctBZ+Yep3NF4DPjWL6FYYIOrbLG8/uZh8Gu1bqAAAAAElFTkSuQmCC') 50% 50% no-repeat scroll;
+    background-size: 16px;
+}
+.iframe-close.left .icon-close{
+    background:transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAzElEQVRIS8XWzQ3CMAwF4PwMAKNkBLpBmRQ2gBEyCgwQB0UKUg+ocexnmrOlzy8H294d9PxBroPCKaUUQrgR0TXnnPdCweCOPrz351rri4iWPRwCb9Ge8l1KuZjCErQ1p0osRVWwBhXDWlQEI9BpGIVOwUiUDaNRFmyBDmErlAXHGJ/OuVMr5sxg7rYbTq6W2gIfwi2BBc6CLXA2jManYCQ+DaNwEYzAxbAWV8EaXA1LcQj8A7e/MrezuS+VOxGtfzvoucvhWwf76ln4AwHWDC4YdE5wAAAAAElFTkSuQmCC') 50% 50% no-repeat scroll;
+    background-size: 20px;
+}
+.iframe-close-son{right: -10px;}
+.iframe-close>i{width:100%; height:100%; background-size:24px auto; } 
+
+/*顶部操作区*/
+.iframe-info{border-bottom:1px solid #eee;}
+.iframe-title{width: 100%; margin: 0 auto; text-align: center; font-size: 18px; }
+.iframe-operation{
+	width: 100%;
+	margin: 0 auto 8px auto;
+	padding-bottom: 8px;
+	text-align: center;
+	justify-content: center;
+}
+.iframe-operation button{
+	width: auto;
+	min-width: 80px;
+	margin-left: 10px;
+	background: #04BE02;
+	padding: 6px 18px;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+}
+.iframe-operation.horizontal button:first-child{margin-left: 0;}
+.iframe-operation.vertical button{display: block;margin-top: 10px;}
+.iframe-operation.vertical button:first-child{margin-top: 0;}
+/*内容*/
+.iframe-content{
+	width: 100%; 
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+.meui-iframe, #meui-iframe{
+	width:100%; 
+	height:100%; 
+	margin:0 auto; 
+	padding:0; 
+	border:0; 
+}
+
+
+/*动画往左*/
+@-webkit-keyframes mymoveLeft{
+	0% {left: 100%;}
+	25% {left: 75%;}
+	50% {left: 50%;}
+	75% {left: 25%;}
+	100% {left: 0;}
+}
+@-moz-keyframes mymoveLeft{
+	0% {left: 100%;}
+	25% {left: 75%;}
+	50% {left: 50%;}
+	75% {left: 25%;}
+	100% {left: 0;}
+}
+@-o-keyframes mymoveLeft{
+	0% {left: 100%;}
+	25% {left: 75%;}
+	50% {left: 50%;}
+	75% {left: 25%;}
+	100% {left: 0;}
+}
+@keyframes mymoveLeft{
+	0% {left: 100%;}
+	25% {left: 75%;}
+	50% {left: 50%;}
+	75% {left: 25%;}
+	100% {left: 0;}
+}
+
+/*动画往上*/
+@-webkit-keyframes mymoveTop{
+	0% {top: 100%;}
+	25% {top: 75%;}
+	50% {top: 50%;}
+	75% {top: 25%;}
+	100% {top: 0;}
+}
+@-moz-keyframes mymoveTop{
+	0% {top: 100%;}
+	25% {top: 75%;}
+	50% {top: 50%;}
+	75% {top: 25%;}
+	100% {top: 0;}
+}
+@-o-keyframes mymoveTop{
+	0% {top: 100%;}
+	25% {top: 75%;}
+	50% {top: 50%;}
+	75% {top: 25%;}
+	100% {top: 0;}
+}
+@keyframes mymoveTop{
+	0% {top: 100%;}
+	25% {top: 75%;}
+	50% {top: 50%;}
+	75% {top: 25%;}
+	100% {top: 0;}
+}

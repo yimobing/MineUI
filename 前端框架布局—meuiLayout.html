@@ -1,0 +1,351 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no,width=device-width">
+<meta name="author" content="ChenHairui">
+<meta name="application-device" content="mobile">
+<meta name="application-name" content="">
+<meta name="format-detection" content="telephone=yes,email=no,date=no,address=no"><!--检测电话、不检测邮箱、日期及地址-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><!--控制状态栏显示样式-->
+<meta name="apple-mobile-web-app-capable" content="yes"><!--是否删除苹果默认的菜单栏和工具栏-->
+<meta http-equiv="Cache-Control" content="no-transform" >
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<title>前端框架布局 —— meuiLayout</title>
+<link type="text/css" rel="stylesheet" href="meui/css/meui.min.css"><!--meui框架-->
+<link type="text/css" rel="stylesheet" href="meui/font-awesome/css/font-awesome.css"><!--font-awesome图标库-->
+<link type="text/css" rel="stylesheet" href="meui/css/meui-keyboard.css"><!--meui数字键盘-->
+<style>
+  body{max-width:800px; margin:0 auto;}
+	#wrap{padding:10px 15px;}
+  h3{margin:50px auto 15px auto;border-bottom:1px solid #f25824;padding:0;padding-bottom:10px;color:#f25824;}
+  .meui-checkbox p{margin-bottom:15px;}
+  .meui-checkbox input{display: inline-block; vertical-align: top; margin-right:15px;}
+  .meui-radio .one>div{display: inline-block; vertical-align: top;}
+</style>
+</head>
+<body>
+<div id="wrap">
+	<header>
+  	<h1 class="meui-h1">MEUI前端框架</h1>
+    <h2 class="meui-h2">作者: chenMufeng</h2>
+  </header>
+  <main>
+  	<h3>单个按钮: meui-btn 灰色、黑色</h3>
+    <section class="meui-button-group">
+       <button type="button" class="meui-btn">默认颜色</button>
+       <button type="button" class="meui-btn white">白色</button>
+       <button type="button" class="meui-btn gray">灰色</button>
+       <button type="button" class="meui-btn lightgray">浅灰色</button>
+       <button type="button" class="meui-btn black">黑色</button>
+       <button type="button" class="meui-btn darkblack">深黑色</button>
+
+    <h3>单个按钮: meui-btn 蓝色</h3>
+    <section class="meui-button-group">
+        <button type="button" class="meui-btn blue radius">蓝色</button>
+        <button type="button" class="meui-btn lightblue rounded">浅蓝</button>
+        <button type="button" class="meui-btn dimblue radius">暗蓝色</button>
+        <button type="button" class="meui-btn darkblue">深蓝色</button>
+        <button type="button" class="meui-btn dimdarkblue">暗深蓝色</button>
+     </section><!--/section-meui-->
+
+     <h3>单个按钮: meui-btn 绿色</h3>
+     <section class="meui-button-group">
+        <button type="button" class="meui-btn green">绿色</button>
+        <button type="button" class="meui-btn lightgreen">浅绿色</button>
+        <button type="button" class="meui-btn dimgreen">暗绿色</button>
+        <button type="button" class="meui-btn darkgreen">深绿色</button>
+        <button type="button" class="meui-btn dimdarkgreen">暗深绿色</button>
+        <button type="button" class="meui-btn graygreen">灰绿色</button>
+     </section><!--/section-meui-->
+
+     <h3>单个按钮: meui-btn 红色</h3>
+     <section class="meui-button-group">
+        <button type="button" class="meui-btn red">红色</button>
+        <button type="button" class="meui-btn lightred">浅红色</button>
+        <button type="button" class="meui-btn dimred">暗红色</button>
+     </section><!--/section-meui-->
+
+     <h3>单个按钮: meui-btn 金色、橙色</h3>
+     <section class="meui-button-group">
+        <button type="button" class="meui-btn orange">橙色</button>
+        <button type="button" class="meui-btn lightorange">浅橙色</button>
+     </section><!--/section-meui-->
+
+     <h3>单个按钮: meui-btn 紫色</h3>
+     <section class="meui-button-group">
+        <button type="button" class="meui-btn purple">紫色</button>
+        <button type="button" class="meui-btn lightpurple">浅紫色</button>
+     </section><!--/section-meui-->
+
+
+    
+    <h3>竖排按钮组(2倍大): meui-button</h3>
+    <section class="meui-button">
+      <button type="button" class="meui-btn green l-2x">保存</button>
+      <button type="button" class="meui-btn red l-2x">删除</button>
+      <button type="button" class="meui-btn l-2x">取消</button>
+    </section><!--/meui-button-->
+    
+    <h3>横排按钮组(3倍大): meui-button</h3>
+    <section class="meui-button flex">
+      <button type="button" class="meui-btn green l-3x">保存</button>
+      <button type="button" class="meui-btn red l-3x">删除</button>
+      <button type="button" class="meui-btn l-3x">取消</button>
+    </section><!--/meui-button-->
+    
+ 		
+    <h3>有质感的按钮: meui-button has-texture</h3>
+    <section class="meui-button has-texture flex">
+      <button type="button" class="meui-btn">默认</button>
+      <button type="button" class="meui-btn blue no-bg-img">蓝色</button>
+      <button type="button" class="meui-btn green no-bg-img">绿色</button>
+      <button type="button" class="meui-btn red no-bg-img">红色</button>
+      <button type="button" class="meui-btn orange no-bg-img">橙色</button>
+      <button type="button" class="meui-btn gray no-bg-img">灰色</button>
+    </section><!--/meui-button-->
+    
+    <h3>CheckBox复选框样式：</h3>
+    <section class="meui-checkbox">
+      <p>圆形打勾：
+        <input type="checkbox" class="meui-checkbox circle-tick" checked>
+        <input type="checkbox" class="meui-checkbox circle-tick green" checked>
+        <input type="checkbox" class="meui-checkbox circle-tick red" checked>
+      </p>
+      <p>开关：
+        <input type="checkbox" class="meui-checkbox on-off" checked>
+        <input type="checkbox" class="meui-checkbox on-off green" checked>
+        <input type="checkbox" class="meui-checkbox on-off red" checked>
+      </p>
+      <p>方形打勾：
+        <input type="checkbox" class="meui-checkbox square-tick" checked>
+        <input type="checkbox" class="meui-checkbox square-tick green" checked>
+        <input type="checkbox" class="meui-checkbox square-tick red" checked>
+        <input type="checkbox" class="meui-checkbox square-tick white" checked>
+      </p>
+      <p>方块：
+        <input type="checkbox" class="meui-checkbox square" checked>
+        <input type="checkbox" class="meui-checkbox square green" checked>
+        <input type="checkbox" class="meui-checkbox square red" checked>
+      </p>
+    </section>
+
+    <h3>单选Radio：单个</h3>
+    <section class="meui-radio">
+      <p>蓝色主题(默认）：<input type="radio" class="meui-radio"></p>
+      <p>绿色主题：<input type="radio" class="meui-radio green"></p>
+      <p>红色主题：<input type="radio" class="meui-radio red"></p>
+    </section>
+
+    <h3>单选Radio： 组合</h3>
+    <section class="meui-radio-group">
+      <div class="one">
+        <div class="title">性别：</div>
+        <div class="group">
+          <input type="radio" name="sex" id="sex-male" class="meui-radio" value="男" checked="true">
+          <label for="sex-male">男</label>
+        </div>
+        <div class="group">
+          <input type="radio" name="sex" id="sex-female" class="meui-radio" value="女">
+          <label for="sex-female">女</label>
+        </div>
+      </div><!--/.one-->
+
+      <div class="one">
+        <div class="title">加锁：</div>
+        <div class="group">
+          <input type="radio" name="lock" id="lock-yes" class="meui-radio green" value="1" checked="true">
+          <label for="lock-yes">是</label>
+        </div>
+        <div class="group">
+          <input type="radio" name="lock" id="lcok-no" class="meui-radio green" value="0">
+          <label for="lock-no">否</label>
+        </div>
+      </div><!--/.one-->
+
+      <div class="one">
+        <div class="title">开通：</div>
+        <div class="group">
+          <input type="radio" name="open" id="open-yes" class="meui-radio red" value="0" checked="true">
+          <label for="open-ye">已开通</label>
+        </div>
+        <div class="group">
+          <input type="radio" name="open" id="open-no" class="meui-radio red" value="1">
+          <label for="open-no">未开通</label>
+        </div>
+      </div><!--/.one-->
+    </section>
+
+
+
+
+    <h3>开关按钮：meui-switch</h3>
+    <section class="meui-switch">
+        <p>自动跳过片头片尾：  <input type="checkbox" class="meui-switch" checked></p>
+        <p>播放时启用硬件加速：<input type="checkbox" class="meui-switch green" checked></p>
+        <p>运营商网络自动播放：<input type="checkbox" class="meui-switch red" checked></p>
+    </section>
+
+
+    
+    <h3>meui-layout布局</h3>
+    <section class="meui-layout has-border">
+    	<div class="meui-caption">布局如下</div>
+      <div class="meui-one">
+        <div class="meui-l"><label>评估编号</label></div>
+        <div class="meui-r">U1001</div>
+      </div><!--/meui-one-->
+      <div class="meui-one">
+        <div class="meui-l"><label>只读属性</label></div>
+        <div class="meui-r"><i class="fa fa-circle-o"></i><input type="text" value="只能读我" readonly/></div>
+      </div><!--/meui-one-->
+      <div class="meui-one">
+        <div class="meui-l"><label>禁止操作</label></div>
+        <div class="meui-r"><i class="fa fa-bicycle"></i><input type="text" value="我不可操作" disabled="disabled" /></div>
+      </div><!--/meui-one-->
+      <div class="meui-one">
+        <div class="meui-l"><label>手机端禁止调起输入法</label></div>
+        <div class="meui-r"><i class="fa fa-leaf"></i><input type="text" value="15903013561" onfocus="this.blur();"/></div>
+      </div><!--/meui-one-->
+      <div class="meui-one">
+        <div class="meui-l"><label>手机号码</label></div>
+        <div class="meui-r">
+        	<i class="fa fa-mobile"></i>
+          <input type="text" class="i-board-numeric" value="" placeholder="请输入11位手机号" onfocus="this.blur();this.placeholder=''" onBlur="this.placeholder='请输入11位手机号'"/>
+        </div>
+      </div><!--/meui-one-->
+      <div class="meui-one">
+        <div class="meui-l"><label>房号</label></div>
+        <div class="meui-r">
+        	<i class="fa fa-mobile"></i>
+          <input type="text" class="i-board-numeric" value="" placeholder="请输入房号" onfocus="this.blur();this.placeholder=''" onBlur="this.placeholder='请输入房号'"/>
+        </div>
+        <div class="meui-cell-tips">不要填写幢号</div>
+      </div><!--/meui-one-->
+      <div class="meui-one">
+        <div class="meui-l"><label>建筑面积</label></div>
+        <div class="meui-r">
+        	<i class="fa fa-spinner fa-spin"></i>
+          <input type="text" class="i-board-dot" value="" placeholder="请输入建筑面积" onfocus="this.blur();this.placeholder=''" onBlur="this.placeholder='请输入建筑面积'"/><em class="r-unit">平方米</em>
+        </div>
+        <div class="meui-cell-button"><button type="button">右侧按钮</button></div>
+      </div><!--/meui-one-->
+      <div class="meui-one">
+        <div class="meui-l"><label>备注</label></div>
+        <div class="meui-r"><i class="fa fa-file-text"></i><textarea></textarea></div>
+      </div><!--/meui-one-->
+    </section><!--/meui-layout-->
+
+    
+    <h3>类表格样式</h3>
+    <section class="meui-liketable">
+    	<div class="liketable-head liketable-one"> <span>序号</span> <span>奖品名称</span> <span>发奖人</span> <span>发奖时间</span> </div>
+      <div class="liketable-content">
+        <div class="liketable-one"> <span>1</span> <span>IPAD一台IPAD一台IPAD一台1</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>2</span> <span>IPAD一台2</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>3</span> <span>IPAD一台3</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>4</span> <span>IPAD一台4</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>5</span> <span>IPAD一台5</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>6</span> <span>IPAD一台6</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>7</span> <span>IPAD一台7</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>8</span> <span>IPAD一台8</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>9</span> <span>IPAD一台9</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>10</span> <span>IPAD一台10</span> <span>宋小江</span> <span>2018-07-15</span></div>
+        <div class="liketable-one"> <span>11</span> <span>IPAD一台11</span> <span>宋小江</span> <span>2018-07-15</span></div>
+      </div><!--/liketable-content-->
+    </section><!--/meui-liketable-->
+
+    <h3>打开iframe窗口</h3>
+    <section class="meui-iframe">
+      <button type="button" id="btn-iframe" class="meui-btn linear">打开iframe窗口</button>
+    </section>
+
+	</main>
+</div><!--/wrap-->
+
+
+
+
+<script type="text/javascript" src="meui/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="meui/js/meui.min.js"></script><!--meui前端框架-->
+<script type="text/javascript" src="meui/js/meui-keyboard.js"></script><!--meui数字键盘控件-->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="meui/js/html5shiv.min.js"></script>
+<script type="text/javascript" src="meui/js/respond.min.js"></script>
+<script type="text/javascript" src="meui/js/rem.min.js"></script>
+<script type="text/javascript" src="meui/js/json2.js"></script>
+<![endif]-->
+<!--其实移动端大部分顶级版本浏览器不需要html5shiv.min.js | respond.min.js|rem.min.js这3个，因为这3个一般是用于ie浏览器的-->
+<!--json2.js应用于：[JSon对象转化成字符串IE7/IE6兼容js-->
+
+<script type="text/javascript">
+	$(function(){
+		
+		/*+----------------------------+*/
+		//=====调用数字键盘控件
+		$('.i-board-numeric').each(function(){
+			$(this).fadeIn(400).meuiKeyboard({
+				title:'宣朗专属数字键盘',
+				hasPoint:false, //是否有小数点(可缺省),默认true
+				//...
+			})	
+		});
+    
+    /*+----------------------------+*/
+		//=====调用数字键盘控件
+		$('.i-board-dot').each(function(){
+			$(this).fadeIn(400).meuiKeyboard({
+				title:'宣朗专属数字键盘',
+				hasPoint:true, //是否有小数点(可缺省),默认true
+				//...
+			})	
+    });
+
+
+    /*+----------------------------+*/
+    //=====打开iframe窗口
+    $('#btn-iframe').on('click', function(){
+      var linkUrl = '日历插件meuiCalendar.html';
+      meui.openIframe({
+        url: linkUrl, //链接地址
+        caption: '日历控件', //窗口标题(可缺省)
+        top: '2.5%', //窗口距离顶部的距离(可缺省)（数字或百分比，eg.25%)
+        width: '98%', //窗口宽度(可缺省)（数字或百分比，eg1.1200, eg2.98%）
+        titleHeight: 45, //标题栏高度(可缺省)
+        titleFontSize:'18px', //标题文字大小(可缺省), 默认18px
+        showCross: true, //是否显示右上角打叉图标(可缺省), 默认true
+        buttons: ['确定', '取消'], //操作按钮(可缺省)
+        btnBgColor: ['#04BE02', '#888'], //自定义按钮背景色(可缺省). 英文单词或颜色值. eg. green, #1296db
+        btnDirection: 'horizontal', //按钮方向(可缺省).水平|horizontal(默认),垂直|vertical
+        btnClickClose: false, //是否一点击按钮就关闭窗口(可缺省),默认false
+        btnCallBack: function(ret){ //按钮点击回调函数(可缺省). ret 为按钮索引值+1
+          this.closeFrame(); //关闭本窗口(closeFrame是内置函数)
+        },
+        params: { //自定义其它参数(可缺省)
+          //frameId: 'meui-frame-id', //ifame的ID属性(可缺省)
+          //frameName: 'meui-frame-name', //iframe的Name属性(可缺省)
+          //frameZindex: 51, //iframe层级z-index(可缺省)
+          //frameRadius: true,  //iframe四个角是否圆角(可缺省),默认true
+          //frameBorder: true, //iframe是否有边框(可缺省),默认true
+          //maskId: 'meui-frame-mask', //遮罩id(可缺省)
+          //maskZindex: 50, //遮罩层级z-index(可缺省)
+          animation: { //iframe打开时是否启用动画效果(可缺省)
+            enable: false, //默认false不开启(可缺省)
+            direction: 'left' //动画方向(可缺省). left 向左(默认), top 向上
+          }
+        }, 
+        closeCallBack: function(){} //关闭时的回调函数(可缺省)
+      })
+    })
+
+    
+
+		
+	
+	});
+</script>
+
+</body>
+</html>

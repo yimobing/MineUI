@@ -1,0 +1,68 @@
+[新]
+
+
+一、原对话框插件进行拓展：
+
+
+1、提示层（tips层）插件思路：
+
+HTML:
+<span class="help-tips" data-tips="{type:'1', text:"提示内容"}">
+	<i class="fa fa-question-circle-o"></i>
+</span>
+
+JQ:
+var tips = new helpTips({
+	..
+}).init();
+
+
+在原有 meuiDialog插件上添加如下方法:
+meuiDialog.tips({
+	selector: ".help-tips", //绑定元素选择器(可缺省). 默认节点 '.help-tips'
+	attribute: "data-tips", //绑定data-*属性(可缺省). 默认属性 'data-tips'
+	content: "{type:\"1\", text:\"Hi，我是tips\"}", //data-*属性值
+	message: "Hi，我是tips", //文字
+	duration: 4000, //自动消失的时间(单位：毫秒), 默认4秒(可缺省)
+	opacity: 0, //背景透明度,默认0(可缺省). 值: 0到1
+	shade: true, //是否有阴影(可缺省). true 是(默认), false 否
+	theme: "default" //主题，即背景色(可缺省). default 黑色(默认), blue 蓝色, green 绿色, red 红色
+	positon: "center" //位置(可缺省). right 元素右, left 元素左, top 元素上, bottom 元素下, center 页面中间(默认). 会自动根据元素选择器进行上下左右的变换以适应页面布局
+	appear: "fadeint" //出现方式(可缺省). fadeint 淡入, bottom 从底部出现, top 从顶部出现, left 从左侧出现，right 从右侧出现
+	disappear: "fadeout" //消失方式(可缺省). fadeout 淡出
+})
+
+
+
+2、底部弹层
+
+参考微博长按就会出现底部弹层，
+要能自定义标题行、按钮，标题行与按钮可缺省其中任意一个
+
+
+3、元素弹层
+参考微信群要消息时，长按就会出现元素弹层（标为未读、置顶联天、删除该聊天）
+
+
+3、侧栏弹层
+即点一下，侧边出出现一个新页面，新页面里可自定义html内容，或嵌入一个iframe
+
+
+4、loading特效
+
+将原有loading特效（loading加载图标动画特效-meuiLoading.html）整合进 meui.min.js、meui.min.css里
+同时loading特效要能自定义如下元素：
+
+·动画方式
+·是否有遮罩
+·持续时间
+
+
+
+
+5、iframe打开窗口
+整理原有meui.openIframe()到框架示例文件中
+
+6、整合最新的common.css、meui-layout.css
+
+
