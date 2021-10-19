@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no,width=device-width">
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<title>meui图片放大预览并旋转插件Demo——兼容IE6+</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link type="text/css" rel="stylesheet" href="meui/css/meui-previewImage.css">
+</head>
+<body>
+<style>
+	html,body{width:100%; margin:0 auto; padding:0;}
+	body{padding:15px 25px; color:#333; font-size:16px}
+	*{box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; padding:0; outline:none;}
+	h1{font-size:24px; text-align:center;}
+	.panel-image-list{width:1000px; margin:0 auto;}
+	ul:after{content:''; display:block; clear:both;}
+	ul>li{float:left; width:100px; height:106px; margin:0 15px 20px auto; overflow:hidden;}
+	ul>li>img{display:block; width:100%; height:auto; max-height:100%;}
+</style>
+<div class="wrap">
+	<header>
+  	<h1>meui图片放大预览并旋转插件Demo——兼容IE6+</h1>
+  </header>
+	<main>
+    <section class="section-imagelist">
+      <div class="panel-image-list">
+        <ul>
+          <li><img src="img/previewImg-1.jpg"></li>
+          <li><img src="img/previewImg-1.jpg"></li>
+          <li><img src="img/previewImg-1.jpg"></li>
+          <li><img src="img/previewImg-1.jpg"></li>
+          <li><img src="img/previewImg-2.jpg"></li>
+        </ul>
+      </div><!--/.panel-image-list-->
+    </section><!--/section-imageList-->
+  </main>
+</div><!--/.wrap-->
+
+
+<script type="text/javascript" src="meui/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="meui/js/meui-previewImage.js"></script><!--meui图片预览-->
+
+<script type="text/javascript">
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+$(function(){
+	
+	
+	/*+----------------+*/
+	//====预览图片
+	$('.panel-image-list li img').on('click',function(e){
+			e.stopPropagation(); //必须!阻止冒泡(否则第2次无法预览)
+			var imgSrc = $(this).attr('src');
+			$(this).meuiPreviewImage({
+				imgSource: imgSrc, //图片地址
+				degrees: 45, //每次旋转度数
+				direction: 'wise', //点击图片时旋转方向. wise 顺时针(默认), anti 逆时针
+				showCloseButton:true //是否显示关闭按钮,默认true
+			})
+	});
+
+	
+	
+}); //$(function(){})
+	
+</script>
+</body>
+</html>
