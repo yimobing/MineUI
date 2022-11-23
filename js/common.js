@@ -25,9 +25,9 @@ if(!Function.prototype.bind){
         url: '',
         data: {    
         },
-        success:function(msg){
+        success:function(res){
         },
-        error: function(msg){}
+        error: function(res){}
     })
 -----------------------------*/
  function ajax(options){
@@ -41,9 +41,9 @@ if(!Function.prototype.bind){
         data: { },
         cache: false,
         beforeSend: function (XMLHttpRequest) { },
-        success: function (msg) { },
+        success: function (res) { },
         complete: function (XMLHttpRequest, textStatus) { },
-        error: function(msg) { 
+        error: function(res) { 
 			var debug = typeof this.debug == 'undefined' ? false : (this.debug.toString().toLocaleLowerCase() == "true" ? true : false);
 			if(debug){
 				var tips = 'Error，接口出错'; //eg.Error, 楼盘名称接口出错
